@@ -39,40 +39,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<h2>Based on the current page being viewed...</h2>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ forms.checkbox({
-					label: "Include a class to denote the current section?"|t,
-					id: 'showCurrentSection',
-					name: 'showCurrentSection',
-					checked: settings.showCurrentSection,
-					errors: settings.getErrors('showCurrentSection')
-				}) }}
-			</td>
-			<td>
-				<code>&lt;body class="<strong>currentsection-entries</strong>"&gt;</code>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ forms.checkbox({
-					label: "Include a class to denote the current page?"|t,
-					id: 'showCurrentPage',
-					name: 'showCurrentPage',
-					checked: settings.showCurrentPage,
-					errors: settings.getErrors('showCurrentPage')
-				}) }}
-			</td>
-			<td>
-				<code>&lt;body class="<strong>currentpage-entries-sectionHandle</strong>"&gt;</code>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<h2>Based on the user profile being viewed... &nbsp;<em>(applies to user profile page only)</em></h2>
+				<h2>Based on the user profile being viewed... &nbsp;<em>(user profile page only)</em></h2>
 			</td>
 		</tr>
 		<tr>
@@ -86,7 +53,7 @@
 				}) }}
 			</td>
 			<td>
-				<code>&lt;body class="<strong>profile-theirGroup</strong>"&gt;</code>
+				<code>&lt;body class="<strong>profilegroup-theirGroup</strong>"&gt;</code>
 			</td>
 		</tr>
 		<tr>
@@ -101,6 +68,58 @@
 			</td>
 			<td>
 				<code>&lt;body class="<strong>profilelevel-admin</strong>"&gt;</code>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h2>Based on the current page being viewed...</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ forms.checkbox({
+					label: "Include a class to denote the current CP section?"|t,
+					id: 'showCurrentSection',
+					name: 'showCurrentSection',
+					checked: settings.showCurrentSection,
+					errors: settings.getErrors('showCurrentSection')
+				}) }}
+			</td>
+			<td>
+				<code>&lt;body class="<strong>currentsection-settings</strong>"&gt;</code>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ forms.checkbox({
+					label: "Include a class to denote the current page?"|t,
+					id: 'showCurrentPage',
+					name: 'showCurrentPage',
+					checked: settings.showCurrentPage,
+					errors: settings.getErrors('showCurrentPage')
+				}) }}
+			</td>
+			<td>
+				<code>&lt;body class="<strong>currentpage-settings-plugins-cpbodyclasses</strong>"&gt;</code>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h2>Based on the entries section being viewed... &nbsp;<em>(entries sections only)</em></h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ forms.checkbox({
+					label: "Include a class to denote the entries section?"|t,
+					id: 'showEntriesSection',
+					name: 'showEntriesSection',
+					checked: settings.showEntriesSection,
+					errors: settings.getErrors('showEntriesSection')
+				}) }}
+			</td>
+			<td>
+				<code>&lt;body class="<strong>entriessection-sectionHandle</strong>"&gt;</code>
 			</td>
 		</tr>
 	</tbody>

@@ -24,7 +24,25 @@ class CpBodyClassesService extends BaseApplicationComponent
 		$this->_addUserAdminClass('userlevel', $user);
 	}
 
-	// Current section
+	// Profile's user group
+	public function classProfileUserGroups()
+	{
+		// Get user in profile
+		$user = $this->_getProfileUser();
+		// Add user group classes
+		$this->_addUserGroupClasses('profilegroup', $user);
+	}
+
+	// Profile's user admin
+	public function classProfileUserAdmin()
+	{
+		// Get user in profile
+		$user = $this->_getProfileUser();
+		// Add admin class
+		$this->_addUserAdminClass('profilelevel', $user);
+	}
+
+	// Current CP section
 	public function classCurrentSection()
 	{
 		// Get first segment
@@ -45,22 +63,16 @@ class CpBodyClassesService extends BaseApplicationComponent
 		$this->_addClass('currentpage', $page);
 	}
 
-	// Profile's user group
-	public function classProfileUserGroups()
+	// Entries section
+	public function classEntriesSection()
 	{
-		// Get user in profile
-		$user = $this->_getProfileUser();
-		// Add user group classes
-		$this->_addUserGroupClasses('profile', $user);
-	}
-
-	// Profile's user admin
-	public function classProfileUserAdmin()
-	{
-		// Get user in profile
-		$user = $this->_getProfileUser();
-		// Add admin class
-		$this->_addUserAdminClass('profilelevel', $user);
+		// Get URL segments
+		$section = craft()->request->getSegment(1);
+		$channel = craft()->request->getSegment(2);
+		// If entries section and specific channel
+		if ('entries' == $section && $channel) {
+			$this->_addClass('entriessection', $channel);
+		}
 	}
 
 	// ======================================================================== //
@@ -95,11 +107,16 @@ class CpBodyClassesService extends BaseApplicationComponent
 	private function _getProfileUser()
 	{
 		// Get URL segments
-		$page   = craft()->request->getSegment(1);
-		$userId = craft()->request->getSegment(2);
+		$section = craft()->request->getSegment(1);
+		$userId  = craft()->request->getSegment(2);
+		// Determine whether page is a profile
+		$profile   = (('users' == $section) && is_numeric($userId));
+		$myaccount = ('myaccount' == $section);
 		// Return profile user (if valid)
-		if (('users' == $page) && is_numeric($userId)) {
+		if ($profile) {
 			return craft()->users->getUserById($userId);
+		} else if ($myaccount) {
+			return craft()->userSession->getUser();
 		} else {
 			return false;
 		}

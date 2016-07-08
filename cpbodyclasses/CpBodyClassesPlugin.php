@@ -19,10 +19,11 @@ class CpBodyClassesPlugin extends BasePlugin
 			// Add all requested groups
 			if ($s->showUserGroups)        {$c->classUserGroups();}
 			if ($s->showUserAdmin)         {$c->classUserAdmin();}
-			if ($s->showCurrentSection)    {$c->classCurrentSection();}
-			if ($s->showCurrentPage)       {$c->classCurrentPage();}
 			if ($s->showProfileUserGroups) {$c->classProfileUserGroups();}
 			if ($s->showProfileUserAdmin)  {$c->classProfileUserAdmin();}
+			if ($s->showCurrentSection)    {$c->classCurrentSection();}
+			if ($s->showCurrentPage)       {$c->classCurrentPage();}
+			if ($s->showEntriesSection)    {$c->classEntriesSection();}
 		}
 
 		// If any body classes have been set
@@ -51,7 +52,7 @@ class CpBodyClassesPlugin extends BasePlugin
 
 	public function getVersion()
 	{
-		return '1.2.0';
+		return '1.2.1';
 	}
 
 	public function getSchemaVersion()
@@ -83,10 +84,11 @@ class CpBodyClassesPlugin extends BasePlugin
 		return array(
 			'showUserGroups'        => array(AttributeType::Bool, 'default' => true),
 			'showUserAdmin'         => array(AttributeType::Bool, 'default' => true),
-			'showCurrentSection'    => array(AttributeType::Bool, 'default' => false),
-			'showCurrentPage'       => array(AttributeType::Bool, 'default' => false),
 			'showProfileUserGroups' => array(AttributeType::Bool, 'default' => false),
 			'showProfileUserAdmin'  => array(AttributeType::Bool, 'default' => false),
+			'showCurrentSection'    => array(AttributeType::Bool, 'default' => false),
+			'showCurrentPage'       => array(AttributeType::Bool, 'default' => false),
+			'showEntriesSection'    => array(AttributeType::Bool, 'default' => false),
 		);
 	}
 
