@@ -1,24 +1,38 @@
 Control Panel Body Classes plugin for Craft CMS
-======================================
+===============================================
 
-_Add special classes to the CP's `<body>` tag._
+Add special classes to the Control Panel's `<body>` tag.
 
-## Usage
+**Pairs perfectly with the [Control Panel CSS](https://github.com/doublesecretagency/craft-cpcss) and [Control Panel JS](https://github.com/doublesecretagency/craft-cpjs) plugins!**
 
-This plugin will automatically add classes to the `<body>` tag in the control panel. You can use these classes, along with CSS or JavaScript, to target specific DOM elements and manipulate the page. This only affects the control panel... your front-end pages will be unaffected.
+After you've installed the plugin, go to:
 
-After you install it, select which classes you want to use:
+- **Settings > Plugins > Control Panel Body Classes**
 
-![](README-images/example-settings.png)
+From the settings page, you can select which classes you want to use:
 
-## Why?
+![](src/resources/img/example-settings.png)
 
-Because there are a million things that you may want to do in your control panel, and many of them are conditional. Perhaps you want your CSS (or JS) to only take effect for a certain user group, or only on a specific page. This plugin is designed to pair perfectly with [Control Panel CSS](https://github.com/lindseydiloreto/craft-cpcss) and/or [Control Panel JS](https://github.com/lindseydiloreto/craft-cpjs).
+These special classes will now be included in the `<body>` tag of the CP. You can use these classes to manipulate the CSS & JavaScript of the Control Panel however you choose.
 
-You can include CSS/JS in your own custom plugin as well!
+***
+
+## But why?
+
+Because there are a million things that you may want to do in your control panel, and many of them are conditional. Perhaps you want your CSS (or JS) to only take effect for a certain user group, or only on a specific page. Use these special classes to hone in on your targets with precision!
+
+This plugin is designed to work in tandem with [Control Panel CSS](https://github.com/doublesecretagency/craft-cpcss) and/or [Control Panel JS](https://github.com/doublesecretagency/craft-cpjs).
 
 ***
 
 ## Disclaimer
 
-It's important to note that showing/hiding fields via CSS/JS is **purely cosmetic**. Those fields may remain accessible to a savvy user, so don't rely on this plugin to guarantee access/denial of any DOM elements. **We accept no liability for any security issues arising from the use of this plugin.**
+>It's important to note that showing/hiding fields via CSS and JavaScript is **purely cosmetic**. Those fields may remain accessible to a savvy user, so don't rely on this plugin to guarantee access/denial of any DOM elements. **We accept no liability for any security issues arising from the use of this plugin.**
+
+***
+
+## Anything else?
+
+We've got other plugins too!
+
+Check out the full catalog at [doublesecretagency.com/plugins](https://www.doublesecretagency.com/plugins)

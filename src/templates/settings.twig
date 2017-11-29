@@ -1,0 +1,119 @@
+{% import '_includes/forms' as forms %}
+
+<p>Please select which classes you would like to appear in the <code>&lt;body&gt;</code> tag.</p>
+
+<table class="data" id="cpbodyclasses">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                <h2>Based on currently logged in user...</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include user group classes?"|t,
+                    id: 'showUserGroups',
+                    name: 'showUserGroups',
+                    checked: settings.showUserGroups
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>usergroup-myGroup</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include user admin class?"|t,
+                    id: 'showUserAdmin',
+                    name: 'showUserAdmin',
+                    checked: settings.showUserAdmin
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>userlevel-admin</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h2>Based on the user profile being viewed... &nbsp;<em>(user profile page only)</em></h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include profile's user group classes?"|t,
+                    id: 'showProfileUserGroups',
+                    name: 'showProfileUserGroups',
+                    checked: settings.showProfileUserGroups
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>profilegroup-theirGroup</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include profile's user admin class?"|t,
+                    id: 'showProfileUserAdmin',
+                    name: 'showProfileUserAdmin',
+                    checked: settings.showProfileUserAdmin
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>profilelevel-admin</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h2>Based on the current page being viewed...</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include a class to denote the current CP section?"|t,
+                    id: 'showCurrentSection',
+                    name: 'showCurrentSection',
+                    checked: settings.showCurrentSection
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>currentsection-settings</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include a class to denote the current page?"|t,
+                    id: 'showCurrentPage',
+                    name: 'showCurrentPage',
+                    checked: settings.showCurrentPage
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>currentpage-settings-plugins-cp-body-classes</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h2>Based on the entries section being viewed... &nbsp;<em>(entries sections only)</em></h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include a class to denote the entries section?"|t,
+                    id: 'showEntriesSection',
+                    name: 'showEntriesSection',
+                    checked: settings.showEntriesSection
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>entriessection-sectionHandle</strong>"&gt;</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
