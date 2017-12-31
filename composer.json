@@ -24,7 +24,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-beta.36"
+        "craftcms/cms": "^3.0.0-RC1"
     },
     "autoload": {
         "psr-4": {
@@ -35,12 +35,7 @@
         "name": "Control Panel Body Classes",
         "handle": "cp-body-classes",
         "schemaVersion": "2.0.0",
-        "hasCpSettings": true,
-        "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/doublesecretagency/craft-cpbodyclasses/v2/CHANGELOG.md",
-        "components": {
-            "bodyClasses": "doublesecretagency\\cpbodyclasses\\services\\BodyClasses"
-        },
         "class": "doublesecretagency\\cpbodyclasses\\CpBodyClasses"
     }
 }
