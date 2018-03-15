@@ -3,6 +3,14 @@ Control Panel Body Classes plugin for Craft CMS
 
 Add special classes to the Control Panel's `<body>` tag.
 
+***
+
+>This version is for Craft 3. To install it, visit the Plugin Store in your site's Control Panel.
+>
+>For the Craft 2 version, see the [`v1` branch...](https://github.com/doublesecretagency/craft-cpbodyclasses/tree/v1)
+
+***
+
 **Pairs perfectly with the [Control Panel CSS](https://github.com/doublesecretagency/craft-cpcss) and [Control Panel JS](https://github.com/doublesecretagency/craft-cpjs) plugins!**
 
 After you've installed the plugin, go to:
