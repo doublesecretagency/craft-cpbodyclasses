@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 - 2018-05-10
+
+### Added
+- Added `userid-*` class for ID of logged-in user.
+- Added `profileid-*` class for ID of user profile being viewed.
+- Added `entriessite-*` class to denote current site of entry being viewed.
+
 ## 2.0.1 - 2017-12-30
 
 ### Changed
