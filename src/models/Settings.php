@@ -26,11 +26,17 @@ class Settings extends Model
     /** @var bool  $showUserAdmin  Whether to show a class for admins. */
     public $showUserAdmin = true;
 
+    /** @var bool  $showUserId  Whether to show a class for the user's ID. */
+    public $showUserId = false;
+
     /** @var bool  $showProfileUserGroups  When viewing another user's profile, whether to show their user group classes. */
     public $showProfileUserGroups = false;
 
     /** @var bool  $showProfileUserAdmin  When viewing another user's profile, whether to show a class if they are an admin. */
     public $showProfileUserAdmin = false;
+
+    /** @var bool  $showProfileId  When viewing another user's profile, whether to show a class for their user ID. */
+    public $showProfileId = false;
 
     /** @var bool  $showCurrentSection  Whether to show a class for the current section. */
     public $showCurrentSection = false;

@@ -36,6 +36,19 @@
             </td>
         </tr>
         <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include user ID class?"|t,
+                    id: 'showUserId',
+                    name: 'showUserId',
+                    checked: settings.showUserId
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>userid-33</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <h2>Based on the user profile being viewed... &nbsp;<em>(user profile page only)</em></h2>
             </td>
@@ -64,6 +77,19 @@
             </td>
             <td>
                 <code>&lt;body class="<strong>profilelevel-admin</strong>"&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include profile's user ID class?"|t,
+                    id: 'showProfileId',
+                    name: 'showProfileId',
+                    checked: settings.showProfileId
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>profileid-42</strong>"&gt;</code>
             </td>
         </tr>
         <tr>

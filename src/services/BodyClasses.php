@@ -53,6 +53,19 @@ class BodyClasses extends Component
     }
 
     /**
+     * User ID class.
+     *
+     * @return void
+     */
+    public function classUserId()
+    {
+        // Get current user
+        $user = Craft::$app->user->getIdentity();
+        // Add ID class
+        $this->_addUserIdClass('userid', $user);
+    }
+
+    /**
      * Profile's user group classes.
      *
      * @return void
@@ -76,6 +89,19 @@ class BodyClasses extends Component
         $user = $this->_getProfileUser();
         // Add admin class
         $this->_addUserAdminClass('profilelevel', $user);
+    }
+
+    /**
+     * Profile's user ID class.
+     *
+     * @return void
+     */
+    public function classProfileId()
+    {
+        // Get user in profile
+        $user = $this->_getProfileUser();
+        // Add ID class
+        $this->_addUserIdClass('profileid', $user);
     }
 
     /**
@@ -169,6 +195,22 @@ class BodyClasses extends Component
         // If user is an admin
         if ($user && $user->admin) {
             $this->_addClass($prefix, 'admin');
+        }
+    }
+
+    /**
+     * Add class for user ID.
+     *
+     * @param string                   $prefix  Either `userid` or `profileid`.
+     * @param false|IdentityInterface  $user    The user account to be checked.
+     *
+     * @return void
+     */
+    private function _addUserIdClass($prefix, $user)
+    {
+        // Get user ID
+        if ($user) {
+            $this->_addClass($prefix, $user->id);
         }
     }
 

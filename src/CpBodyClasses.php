@@ -57,8 +57,10 @@ class CpBodyClasses extends Plugin
                 // Add all requested groups
                 if ($s->showUserGroups)        {$c->classUserGroups();}
                 if ($s->showUserAdmin)         {$c->classUserAdmin();}
+                if ($s->showUserId)            {$c->classUserId();}
                 if ($s->showProfileUserGroups) {$c->classProfileUserGroups();}
                 if ($s->showProfileUserAdmin)  {$c->classProfileUserAdmin();}
+                if ($s->showProfileId)         {$c->classProfileId();}
                 if ($s->showCurrentSection)    {$c->classCurrentSection();}
                 if ($s->showCurrentPage)       {$c->classCurrentPage();}
                 if ($s->showEntriesSection)    {$c->classEntriesSection();}
