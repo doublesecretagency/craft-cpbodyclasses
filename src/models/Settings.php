@@ -47,4 +47,7 @@ class Settings extends Model
     /** @var bool  $showEntriesSection  Whether to show a class for entries of a particular section. */
     public $showEntriesSection = false;
 
+    /** @var bool  $showEntriesSite  Whether to show a class for entries of a particular site. */
+    public $showEntriesSite = false;
+
 }

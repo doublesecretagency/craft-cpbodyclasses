@@ -149,6 +149,27 @@ class BodyClasses extends Component
         }
     }
 
+    /**
+     * Entries site class.
+     *
+     * @return void
+     */
+    public function classEntriesSite()
+    {
+        // Get URL segments
+        $section = Craft::$app->request->getSegment(1);
+        $entry   = Craft::$app->request->getSegment(3);
+        $site    = Craft::$app->request->getSegment(4);
+        // If entries section and specific entry
+        if ('entries' == $section && $entry) {
+            if (!$site) {
+                // If no site detected, assume primary site
+                $site = Craft::$app->getSites()->getPrimarySite()->handle;
+            }
+            $this->_addClass('entriessite', $site);
+        }
+    }
+
     // ======================================================================== //
 
     /**

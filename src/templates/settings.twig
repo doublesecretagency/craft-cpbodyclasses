@@ -141,5 +141,18 @@
                 <code>&lt;body class="<strong>entriessection-sectionHandle</strong>"&gt;</code>
             </td>
         </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include a class to denote the entries site?"|t,
+                    id: 'showEntriesSite',
+                    name: 'showEntriesSite',
+                    checked: settings.showEntriesSite
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>entriessite-english</strong>"&gt;</code>
+            </td>
+        </tr>
     </tbody>
 </table>

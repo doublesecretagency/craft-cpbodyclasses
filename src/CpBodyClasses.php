@@ -64,6 +64,7 @@ class CpBodyClasses extends Plugin
                 if ($s->showCurrentSection)    {$c->classCurrentSection();}
                 if ($s->showCurrentPage)       {$c->classCurrentPage();}
                 if ($s->showEntriesSection)    {$c->classEntriesSection();}
+                if ($s->showEntriesSite)       {$c->classEntriesSite();}
 
                 // If any body classes have been set, apply them
                 if (!empty($c->bodyClasses)) {
