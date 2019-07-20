@@ -128,6 +128,26 @@ class BodyClasses extends Component
     {
         // Get all segments
         $segments = Craft::$app->request->getSegments();
+
+        // If current version of Craft is 3.2+
+        if (version_compare('3.2', Craft::$app->getVersion(), '<=')) {
+
+            // Get whether entry is fresh
+            $fresh = Craft::$app->getRequest()->getQueryParam('fresh');
+
+            // If entry is fresh
+            if ($fresh) {
+
+                // Get last segment
+                $lastSegment = array_pop($segments);
+
+                // If last segement is numeric, replace it
+                $segments[] = (is_numeric($lastSegment) ? 'new' : $lastSegment);
+
+            }
+
+        }
+
         // Compile page class
         $page = implode('-', $segments);
         $this->_addClass('currentpage', $page);
