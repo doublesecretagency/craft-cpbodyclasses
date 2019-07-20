@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.1 - 2019-07-19
+
+### Fixed
+- Fixed minor Craft 3.2 compatibility issue.
+
 ## 2.1.0 - 2018-05-10
 
 ### Added
