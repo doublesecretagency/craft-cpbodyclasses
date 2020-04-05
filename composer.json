@@ -2,7 +2,7 @@
     "name": "doublesecretagency/craft-cpbodyclasses",
     "description": "Adds special classes to the Control Panel's <body> tag.",
     "type": "craft-plugin",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "keywords": [
         "craft",
         "cms",

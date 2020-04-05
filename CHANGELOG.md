@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.2.0 - 2020-04-04
+
+### Added
+- Added `entryversion-*` classes to denote version type of entry being edited.
+
+### Changed
+- Now requires a minimum of Craft 3.2.
+
 ## 2.1.1 - 2019-07-19
 
 ### Fixed
