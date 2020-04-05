@@ -154,5 +154,23 @@
                 <code>&lt;body class="<strong>entriessite-english</strong>"&gt;</code>
             </td>
         </tr>
+        <tr>
+            <td colspan="2">
+                <h2>Based on the entry being edited... &nbsp;<em>(when editing an entry only)</em></h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ forms.checkbox({
+                    label: "Include a class to denote the entry version type?"|t,
+                    id: 'showEntryVersion',
+                    name: 'showEntryVersion',
+                    checked: settings.showEntryVersion
+                }) }}
+            </td>
+            <td>
+                <code>&lt;body class="<strong>entryversion-current</strong>"&gt;</code>
+            </td>
+        </tr>
     </tbody>
 </table>

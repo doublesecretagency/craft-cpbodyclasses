@@ -185,6 +185,46 @@ class BodyClasses extends Component
         }
     }
 
+    /**
+     * Entry version class.
+     *
+     * @return void
+     */
+    public function classEntryVersion()
+    {
+        // Get URL segments
+        $section = Craft::$app->request->getSegment(1);
+        $entry   = Craft::$app->request->getSegment(3);
+
+        // If not editing an entry, bail
+        if ('entries' != $section || !$entry) {
+            return;
+        }
+
+        // Get query parameters
+        $fresh      = Craft::$app->getRequest()->getQueryParam('fresh');
+        $draftId    = Craft::$app->getRequest()->getQueryParam('draftId');
+        $revisionId = Craft::$app->getRequest()->getQueryParam('revisionId');
+
+        // Set which entry version
+        if ($fresh) {
+            // Brand new
+            $version = 'new';
+        } else if ($draftId) {
+            // Draft of existing
+            $version = 'draft';
+        } else if ($revisionId) {
+            // Previously published revision
+            $version = 'revision';
+        } else {
+            // Current version
+            $version = 'current';
+        }
+
+        // Compile page class
+        $this->_addClass('entryversion', $version);
+    }
+
     // ======================================================================== //
 
     /**
