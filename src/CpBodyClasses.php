@@ -70,16 +70,14 @@ class CpBodyClasses extends Plugin
                 // If any body classes have been set, apply them
                 if (!empty($c->bodyClasses)) {
                     // Determine current structure of body classes
-                    if (is_array($context['bodyClass'])) {
-                        // Craft >3.5, merge with existing array
-                        $context['bodyClass'] = array_merge($context['bodyClass'], $c->bodyClasses);
-                    } else if (is_string($context['bodyClass'])) {
+                    if (isset($context['bodyAttributes'])) {
+                        // Craft >3.5, append to bodyAttributes.class
+                        array_push($context['bodyAttributes']['class'], ...$c->bodyClasses);
+                    } else {
                         // Craft <3.4, merge with existing string
                         $allClasses = implode(' ', $c->bodyClasses);
-                        $context['bodyClass'] .= " $allClasses";
-                    } else {
-                        // Fallback, set as new array
-                        $context['bodyClass'] = $c->bodyClasses;
+                        if (isset($context['bodyClass']))
+                            $context['bodyClass'] .= " $allClasses";
                     }
                 }
 
