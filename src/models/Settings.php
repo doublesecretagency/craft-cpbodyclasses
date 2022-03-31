@@ -20,37 +20,59 @@ use craft\base\Model;
 class Settings extends Model
 {
 
-    /** @var bool Whether to show user group classes. */
-    public $showUserGroups = true;
+    /**
+     * @var bool Whether to show user group classes.
+     */
+    public bool $showUserGroups = true;
 
-    /** @var bool Whether to show a class for admins. */
-    public $showUserAdmin = true;
+    /**
+     * @var bool Whether to show a class for admins.
+     */
+    public bool $showUserAdmin = true;
 
-    /** @var bool Whether to show a class for the user's ID. */
-    public $showUserId = false;
+    /**
+     * @var bool Whether to show a class for the user's ID.
+     */
+    public bool $showUserId = false;
 
-    /** @var bool When viewing another user's profile, whether to show their user group classes. */
-    public $showProfileUserGroups = false;
+    /**
+     * @var bool When viewing another user's profile, whether to show their user group classes.
+     */
+    public bool $showProfileUserGroups = false;
 
-    /** @var bool When viewing another user's profile, whether to show a class if they are an admin. */
-    public $showProfileUserAdmin = false;
+    /**
+     * @var bool When viewing another user's profile, whether to show a class if they are an admin.
+     */
+    public bool $showProfileUserAdmin = false;
 
-    /** @var bool When viewing another user's profile, whether to show a class for their user ID. */
-    public $showProfileId = false;
+    /**
+     * @var bool When viewing another user's profile, whether to show a class for their user ID.
+     */
+    public bool $showProfileId = false;
 
-    /** @var bool Whether to show a class for the current section. */
-    public $showCurrentSection = false;
+    /**
+     * @var bool Whether to show a class for the current section.
+     */
+    public bool $showCurrentSection = false;
 
-    /** @var bool Whether to show a class for the current page. */
-    public $showCurrentPage = false;
+    /**
+     * @var bool Whether to show a class for the current page.
+     */
+    public bool $showCurrentPage = false;
 
-    /** @var bool Whether to show a class for entries of a particular section. */
-    public $showEntriesSection = false;
+    /**
+     * @var bool Whether to show a class for entries of a particular section.
+     */
+    public bool $showEntriesSection = false;
 
-    /** @var bool Whether to show a class for entries of a particular site. */
-    public $showEntriesSite = false;
+    /**
+     * @var bool Whether to show a class for entries of a particular site.
+     */
+    public bool $showEntriesSite = false;
 
-    /** @var bool When editing an entry, whether to show a class for the version type. */
-    public $showEntryVersion = false;
+    /**
+     * @var bool When editing an entry, whether to show a class for the version type.
+     */
+    public bool $showEntryVersion = false;
 
 }

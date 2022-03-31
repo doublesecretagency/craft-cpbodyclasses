@@ -13,8 +13,7 @@ namespace doublesecretagency\cpbodyclasses\services;
 
 use Craft;
 use craft\base\Component;
-
-use yii\web\IdentityInterface;
+use craft\elements\User;
 
 /**
  * Class BodyClasses
@@ -23,15 +22,15 @@ use yii\web\IdentityInterface;
 class BodyClasses extends Component
 {
 
-    /** @var array  $bodyClasses  Collection of classes to be applied. */
-    public $bodyClasses = [];
+    /**
+     * @var array Collection of classes to be applied.
+     */
+    public array $bodyClasses = [];
 
     /**
      * User group classes.
-     *
-     * @return void
      */
-    public function classUserGroups()
+    public function classUserGroups(): void
     {
         // Get current user
         $user = Craft::$app->user->getIdentity();
@@ -41,10 +40,8 @@ class BodyClasses extends Component
 
     /**
      * User admin class.
-     *
-     * @return void
      */
-    public function classUserAdmin()
+    public function classUserAdmin(): void
     {
         // Get current user
         $user = Craft::$app->user->getIdentity();
@@ -54,10 +51,8 @@ class BodyClasses extends Component
 
     /**
      * User ID class.
-     *
-     * @return void
      */
-    public function classUserId()
+    public function classUserId(): void
     {
         // Get current user
         $user = Craft::$app->user->getIdentity();
@@ -67,10 +62,8 @@ class BodyClasses extends Component
 
     /**
      * Profile's user group classes.
-     *
-     * @return void
      */
-    public function classProfileUserGroups()
+    public function classProfileUserGroups(): void
     {
         // Get user in profile
         $user = $this->_getProfileUser();
@@ -80,10 +73,8 @@ class BodyClasses extends Component
 
     /**
      * Profile's user admin class.
-     *
-     * @return void
      */
-    public function classProfileUserAdmin()
+    public function classProfileUserAdmin(): void
     {
         // Get user in profile
         $user = $this->_getProfileUser();
@@ -93,10 +84,8 @@ class BodyClasses extends Component
 
     /**
      * Profile's user ID class.
-     *
-     * @return void
      */
-    public function classProfileId()
+    public function classProfileId(): void
     {
         // Get user in profile
         $user = $this->_getProfileUser();
@@ -106,10 +95,8 @@ class BodyClasses extends Component
 
     /**
      * Current CP section class.
-     *
-     * @return void
      */
-    public function classCurrentSection()
+    public function classCurrentSection(): void
     {
         // Get first segment
         $section = Craft::$app->request->getSegment(1);
@@ -121,10 +108,8 @@ class BodyClasses extends Component
 
     /**
      * Current page class.
-     *
-     * @return void
      */
-    public function classCurrentPage()
+    public function classCurrentPage(): void
     {
         // Get all segments
         $segments = Craft::$app->request->getSegments();
@@ -134,13 +119,10 @@ class BodyClasses extends Component
 
         // If entry is fresh
         if ($fresh) {
-
             // Get last segment
             $lastSegment = array_pop($segments);
-
             // If last segment is numeric, replace it
             $segments[] = (is_numeric($lastSegment) ? 'new' : $lastSegment);
-
         }
 
         // Compile page class
@@ -150,33 +132,29 @@ class BodyClasses extends Component
 
     /**
      * Entries section class.
-     *
-     * @return void
      */
-    public function classEntriesSection()
+    public function classEntriesSection(): void
     {
         // Get URL segments
         $section = Craft::$app->request->getSegment(1);
         $channel = Craft::$app->request->getSegment(2);
         // If entries section and specific channel
-        if ('entries' == $section && $channel) {
+        if ('entries' === $section && $channel) {
             $this->_addClass('entriessection', $channel);
         }
     }
 
     /**
      * Entries site class.
-     *
-     * @return void
      */
-    public function classEntriesSite()
+    public function classEntriesSite(): void
     {
         // Get URL segments
         $section = Craft::$app->request->getSegment(1);
         $entry   = Craft::$app->request->getSegment(3);
         $site    = Craft::$app->request->getSegment(4);
         // If entries section and specific entry
-        if ('entries' == $section && $entry) {
+        if ('entries' === $section && $entry) {
             if (!$site) {
                 // If no site detected, assume primary site
                 $site = Craft::$app->getSites()->getPrimarySite()->handle;
@@ -187,17 +165,15 @@ class BodyClasses extends Component
 
     /**
      * Entry version class.
-     *
-     * @return void
      */
-    public function classEntryVersion()
+    public function classEntryVersion(): void
     {
         // Get URL segments
         $section = Craft::$app->request->getSegment(1);
         $entry   = Craft::$app->request->getSegment(3);
 
         // If not editing an entry, bail
-        if ('entries' != $section || !$entry) {
+        if ('entries' !== $section || !$entry) {
             return;
         }
 
@@ -230,12 +206,10 @@ class BodyClasses extends Component
     /**
      * Append body class to master array.
      *
-     * @param string  $prefix  Prefix to show the class purpose.
-     * @param string  $class   Non-prefixed class.
-     *
-     * @return void
+     * @param string $prefix Prefix to show the class purpose.
+     * @param string $class Non-prefixed class.
      */
-    private function _addClass($prefix, $class)
+    private function _addClass(string $prefix, string $class): void
     {
         $this->bodyClasses[] = $prefix.'-'.$class;
     }
@@ -243,12 +217,10 @@ class BodyClasses extends Component
     /**
      * Add classes for user groups.
      *
-     * @param string                   $prefix  Either `usergroup` or `profilegroup`.
-     * @param false|IdentityInterface  $user    The user account to be checked.
-     *
-     * @return void
+     * @param string $prefix Either `usergroup` or `profilegroup`.
+     * @param null|User $user The user account to be checked.
      */
-    private function _addUserGroupClasses($prefix, $user)
+    private function _addUserGroupClasses(string $prefix, ?User $user): void
     {
         // Get user groups
         if ($user) {
@@ -261,12 +233,10 @@ class BodyClasses extends Component
     /**
      * Add class for admin.
      *
-     * @param string                   $prefix  Either `userlevel` or `profilelevel`.
-     * @param false|IdentityInterface  $user    The user account to be checked.
-     *
-     * @return void
+     * @param string $prefix Either `userlevel` or `profilelevel`.
+     * @param null|User $user The user account to be checked.
      */
-    private function _addUserAdminClass($prefix, $user)
+    private function _addUserAdminClass(string $prefix, ?User $user): void
     {
         // If user is an admin
         if ($user && $user->admin) {
@@ -277,12 +247,10 @@ class BodyClasses extends Component
     /**
      * Add class for user ID.
      *
-     * @param string                   $prefix  Either `userid` or `profileid`.
-     * @param false|IdentityInterface  $user    The user account to be checked.
-     *
-     * @return void
+     * @param string $prefix Either `userid` or `profileid`.
+     * @param null|User $user The user account to be checked.
      */
-    private function _addUserIdClass($prefix, $user)
+    private function _addUserIdClass(string $prefix, ?User $user): void
     {
         // Get user ID
         if ($user) {
@@ -293,26 +261,26 @@ class BodyClasses extends Component
     /**
      * Get user of profile being viewed.
      *
-     * @return false|IdentityInterface  A valid user model for the profile being viewed, or false if invalid.
+     * @return null|User A valid user model for the profile being viewed, or null if invalid.
      */
-    private function _getProfileUser()
+    private function _getProfileUser(): ?User
     {
         // Get URL segments
         $section = Craft::$app->request->getSegment(1);
         $userId  = Craft::$app->request->getSegment(2);
         // Determine whether page is a profile
-        $myaccount = ('myaccount' == $section);
-        $profile   = (('users' == $section) && is_numeric($userId));
+        $myaccount = ('myaccount' === $section);
+        $profile   = (('users' === $section) && is_numeric($userId));
         // If not viewing a profile
         if (!$myaccount && !$profile) {
-            return false;
+            return null;
         }
         // If viewing your own profile
         if ($myaccount) {
             return Craft::$app->user->getIdentity();
         }
         // Return other user
-        return Craft::$app->users->getUserById($userId);
+        return Craft::$app->getUsers()->getUserById($userId);
     }
 
 }

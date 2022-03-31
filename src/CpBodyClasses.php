@@ -12,8 +12,8 @@
 namespace doublesecretagency\cpbodyclasses;
 
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin;
-
 use doublesecretagency\cpbodyclasses\models\Settings;
 use doublesecretagency\cpbodyclasses\services\BodyClasses;
 use doublesecretagency\cpbodyclasses\web\assets\SettingsAssets;
@@ -25,14 +25,20 @@ use doublesecretagency\cpbodyclasses\web\assets\SettingsAssets;
 class CpBodyClasses extends Plugin
 {
 
-    /** @var Plugin  $plugin  Self-referential plugin property. */
-    public static $plugin;
+    /**
+     * @var Plugin Self-referential plugin property.
+     */
+    public static Plugin $plugin;
 
-    /** @var bool  $hasCpSettings  The plugin has a settings page. */
-    public $hasCpSettings = true;
+    /**
+     * @var bool The plugin has a settings page.
+     */
+    public bool $hasCpSettings = true;
 
-    /** @inheritDoc */
-    public function init()
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -42,13 +48,45 @@ class CpBodyClasses extends Plugin
             'bodyClasses' => BodyClasses::class,
         ]);
 
-        // If control panel page
+        // If control panel page, load body classes
         if (Craft::$app->getRequest()->getIsCpRequest()) {
+            $this->_bodyClasses();
+        }
+    }
 
-            // Apply body classes as needed
-            Craft::$app->getView()->hook('cp.layouts.base', function(array &$context) {
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel(): ?Model
+    {
+        return new Settings();
+    }
 
-                // Get plugin settings
+    /**
+     * @inheritdoc
+     */
+    protected function settingsHtml(): ?string
+    {
+        $view = Craft::$app->getView();
+        $view->registerAssetBundle(SettingsAssets::class);
+        return $view->renderTemplate('cp-body-classes/settings', [
+            'settings' => $this->getSettings(),
+        ]);
+    }
+
+    // ========================================================================= //
+
+    /**
+     * Load all specified body classes.
+     */
+    private function _bodyClasses(): void
+    {
+        // Apply body classes as needed
+        Craft::$app->getView()->hook(
+            'cp.layouts.base',
+            static function(array &$context) {
+
+                /** @var Settings $s */
                 $s = CpBodyClasses::$plugin->getSettings();
 
                 // Load class services
@@ -67,44 +105,16 @@ class CpBodyClasses extends Plugin
                 if ($s->showEntriesSite)       {$c->classEntriesSite();}
                 if ($s->showEntryVersion)      {$c->classEntryVersion();}
 
-                // If any body classes have been set, apply them
-                if (!empty($c->bodyClasses)) {
-                    // Determine current structure of body classes
-                    if (isset($context['bodyAttributes'])) {
-                        // Craft >3.5, append to bodyAttributes.class
-                        array_push($context['bodyAttributes']['class'], ...$c->bodyClasses);
-                    } else {
-                        // Craft <3.4, merge with existing string
-                        $allClasses = implode(' ', $c->bodyClasses);
-                        if (isset($context['bodyClass']))
-                            $context['bodyClass'] .= " $allClasses";
-                    }
+                // If no body classes have been set, bail
+                if (empty($c->bodyClasses)) {
+                    return;
                 }
 
-            });
+                // Append body classes to bodyAttributes.class
+                array_push($context['bodyAttributes']['class'], ...$c->bodyClasses);
 
-        }
-
-    }
-
-    /**
-     * @return Settings  Plugin settings model.
-     */
-    protected function createSettingsModel()
-    {
-        return new Settings();
-    }
-
-    /**
-     * @return string  The fully rendered settings template.
-     */
-    protected function settingsHtml(): string
-    {
-        $view = Craft::$app->getView();
-        $view->registerAssetBundle(SettingsAssets::class);
-        return $view->renderTemplate('cp-body-classes/settings', [
-            'settings' => $this->getSettings(),
-        ]);
+            }
+        );
     }
 
 }

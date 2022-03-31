@@ -1,15 +1,10 @@
-Control Panel Body Classes plugin for Craft CMS
-===============================================
+<img align="left" src="https://raw.githubusercontent.com/doublesecretagency/craft-cpbodyclasses/v2/src/icon.svg" alt="Plugin icon">
 
-Add special classes to the Control Panel's `<body>` tag.
+# Control Panel Body Classes plugin for Craft CMS
 
-***
+**Add special classes to the Control Panel's `<body>` tag.**
 
->This version is for Craft 3. To install it, visit the Plugin Store in your site's Control Panel.
->
->For the Craft 2 version, see the [`v1` branch...](https://github.com/doublesecretagency/craft-cpbodyclasses/tree/v1)
-
-***
+---
 
 **Pairs perfectly with the [Control Panel CSS](https://github.com/doublesecretagency/craft-cpcss) and [Control Panel JS](https://github.com/doublesecretagency/craft-cpjs) plugins!**
 
@@ -23,7 +18,7 @@ From the settings page, you can select which classes you want to use:
 
 These special classes will now be included in the `<body>` tag of the CP. You can use these classes to manipulate the CSS & JavaScript of the Control Panel however you choose.
 
-***
+---
 
 ## But why?
 
@@ -31,13 +26,13 @@ Because there are a million things that you may want to do in your control panel
 
 This plugin is designed to work in tandem with [Control Panel CSS](https://github.com/doublesecretagency/craft-cpcss) and/or [Control Panel JS](https://github.com/doublesecretagency/craft-cpjs).
 
-***
+---
 
 ## Disclaimer
 
 >It's important to note that showing/hiding fields via CSS and JavaScript is **purely cosmetic**. Those fields may remain accessible to a savvy user, so don't rely on this plugin to guarantee access/denial of any DOM elements. **We accept no liability for any security issues arising from the use of this plugin.**
 
-***
+---
 
 ## Anything else?
 
