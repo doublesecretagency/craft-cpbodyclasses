@@ -2,7 +2,7 @@
     "name": "doublesecretagency/craft-cpbodyclasses",
     "description": "Adds special classes to the Control Panel's <body> tag.",
     "type": "craft-plugin",
-    "version": "2.3.0",
+    "version": "3.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -13,7 +13,7 @@
         "javascript"
     ],
     "support": {
-        "docs": "https://github.com/doublesecretagency/craft-cpbodyclasses/blob/v2/README.md",
+        "docs": "https://github.com/doublesecretagency/craft-cpbodyclasses/blob/v3/README.md",
         "issues": "https://github.com/doublesecretagency/craft-cpbodyclasses/issues"
     },
     "license": "MIT",
@@ -35,7 +35,7 @@
         "name": "Control Panel Body Classes",
         "handle": "cp-body-classes",
         "schemaVersion": "2.0.0",
-        "changelogUrl": "https://raw.githubusercontent.com/doublesecretagency/craft-cpbodyclasses/v2/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/doublesecretagency/craft-cpbodyclasses/v3/CHANGELOG.md",
         "class": "doublesecretagency\\cpbodyclasses\\CpBodyClasses"
     }
 }
