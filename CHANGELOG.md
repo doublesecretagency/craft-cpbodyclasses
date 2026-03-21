@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.1.0 - 2026-03-21
 
 ### Fixed
 - Fixed compatibility with Craft 5.9+. ([#6](https://github.com/doublesecretagency/craft-cpbodyclasses/issues/6))
