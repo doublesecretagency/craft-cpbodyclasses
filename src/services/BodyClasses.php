@@ -98,8 +98,18 @@ class BodyClasses extends Component
      */
     public function classCurrentSection(): void
     {
+        // Get request service
+        $request = Craft::$app->request;
+
         // Get first segment
-        $section = Craft::$app->request->getSegment(1);
+        $section = $request->getSegment(1);
+
+        // If first segment is `content` and using Craft 5.9+
+        if ($section === 'content' && !$this->_pre59()) {
+            // Get the second segment instead
+            $section = $request->getSegment(2);
+        }
+
         // If section can be determined
         if ($section) {
             $this->_addClass('currentsection', $section);
@@ -135,9 +145,16 @@ class BodyClasses extends Component
      */
     public function classEntriesSection(): void
     {
+        // Whether Craft version is pre-5.9 (entries moved from /entries/ to /content/entries/)
+        $pre59 = $this->_pre59();
+
+        // Get request service
+        $request = Craft::$app->request;
+
         // Get URL segments
-        $section = Craft::$app->request->getSegment(1);
-        $channel = Craft::$app->request->getSegment(2);
+        $section = $request->getSegment($pre59 ? 1 : 2);
+        $channel = $request->getSegment($pre59 ? 2 : 3);
+
         // If entries section and specific channel
         if ('entries' === $section && $channel) {
             $this->_addClass('entriessection', $channel);
@@ -149,10 +166,17 @@ class BodyClasses extends Component
      */
     public function classEntriesSite(): void
     {
+        // Whether Craft version is pre-5.9 (entries moved from /entries/ to /content/entries/)
+        $pre59 = $this->_pre59();
+
+        // Get request service
+        $request = Craft::$app->request;
+
         // Get URL segments
-        $section = Craft::$app->request->getSegment(1);
-        $entry   = Craft::$app->request->getSegment(3);
-        $site    = Craft::$app->request->getSegment(4);
+        $section = $request->getSegment($pre59 ? 1 : 2);
+        $entry   = $request->getSegment($pre59 ? 3 : 4);
+        $site    = $request->getSegment($pre59 ? 4 : 5);
+
         // If entries section and specific entry
         if ('entries' === $section && $entry) {
             if (!$site) {
@@ -168,9 +192,15 @@ class BodyClasses extends Component
      */
     public function classEntryVersion(): void
     {
+        // Whether Craft version is pre-5.9 (entries moved from /entries/ to /content/entries/)
+        $pre59 = $this->_pre59();
+
+        // Get request service
+        $request = Craft::$app->request;
+
         // Get URL segments
-        $section = Craft::$app->request->getSegment(1);
-        $entry   = Craft::$app->request->getSegment(3);
+        $section = $request->getSegment($pre59 ? 1 : 2);
+        $entry   = $request->getSegment($pre59 ? 3 : 4);
 
         // If not editing an entry, bail
         if ('entries' !== $section || !$entry) {
@@ -256,6 +286,15 @@ class BodyClasses extends Component
         if ($user) {
             $this->_addClass($prefix, $user->id);
         }
+    }
+
+    /**
+     * Whether the current Craft version is pre-5.9.
+     * In Craft 5.9+, entries moved from /entries/ to /content/entries/.
+     */
+    private function _pre59(): bool
+    {
+        return version_compare(Craft::$app->version, '5.9', '<');
     }
 
     /**
